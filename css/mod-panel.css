@@ -1,0 +1,95 @@
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: rgba(25, 25, 35, 0.95);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+}
+
+.side-panel.active {
+    right: 0;
+}
+
+.side-panel {
+    cursor: pointer;
+}
+
+.side-panel-content {
+    cursor: default;
+    background: rgba(25, 25, 35, 0.95);
+}
+
+.side-panel-content {
+    padding: 30px 20px;
+    color: #fff;
+}
+
+.side-panel-content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+}
+
+.side-panel-content img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-image: url('C:/Users/joao/Desktop/SMUNK MOD/imagem/bandeiras/default.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.side-panel-content p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.side-panel-content .mod-features {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.side-panel-content .mod-features span {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.side-panel-content .button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.side-panel-content .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 480px) {
+    .side-panel {
+        width: 100%;
+        right: -100%;
+    }
+}

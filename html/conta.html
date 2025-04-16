@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMUNK MOD - Conta</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .redirect-container {
+            text-align: center;
+        }
+
+        .redirect-container h1 {
+            font-size: 2rem;
+            color: #00ff88;
+            margin-bottom: 2rem;
+        }
+
+        .redirect-icons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .redirect-icon {
+            background: #2a2a2a;
+            padding: 1.5rem;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
+        }
+
+        .redirect-icon:hover {
+            transform: scale(1.1);
+            background: #00ff88;
+        }
+
+        .redirect-icon i {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .redirect-icon:hover i {
+            color: #1a1a1a;
+        }
+
+        .maintenance-message {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: #ff4d4d;
+            text-align: center;
+        }
+
+        .discord-invite {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .discord-invite a {
+            color: #7289da;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .discord-invite a:hover {
+            color: #5b6eae;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-container">
+        <h1>Escolha para onde deseja ir</h1>
+        <div class="redirect-icons">
+            <a href="../index.html" class="redirect-icon">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="mod.html" class="redirect-icon">
+                <i class="fas fa-puzzle-piece"></i>
+            </a>
+        </div>
+        <p class="maintenance-message">A página de conta está em manutenção. Por favor, volte mais tarde.</p>
+        <p class="discord-invite">
+            Junte-se ao nosso Discord: 
+            <a href="https://discord.gg/84eeNeAMAC" target="_blank">https://discord.gg/84eeNeAMAC</a>
+        </p>
+    </div>
+</body>
+</html>

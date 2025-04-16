@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMUNK MOD - Pagamento PIX</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="../js/security.js"></script>
+    <style>
+        .header {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+
+        .main-content {
+            margin-top: 5rem;
+            padding: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .payment-container {
+            background: #2a2a2a;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        .payment-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
+
+        .payment-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #ccc;
+        }
+
+        .qr-code-container {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            margin: 0 auto 2rem;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-code {
+            width: 100%;
+            height: 100%;
+        }
+
+        .payment-info {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .payment-info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .payment-info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .payment-info-label {
+            color: #888;
+        }
+
+        .payment-info-value {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .payment-info-value.highlight {
+            color: #00ff88;
+            font-size: 1.2rem;
+        }
+
+        .copy-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .timer-container {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .timer {
+            font-size: 2rem;
+            color: #00ff88;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timer-label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .back-button {
+            background: transparent;
+            border: 2px solid #00ff88;
+            color: #00ff88;
+            padding: 1rem 2rem;
+            border-radius: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .payment-container {
+                padding: 1.5rem;
+            }
+
+            .payment-title {
+                font-size: 1.5rem;
+            }
+
+            .qr-code-container {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                SMUNK MOD
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="mod.html"><i class="fas fa-puzzle-piece"></i> Mods</a>
+                <a href="conta.html"><i class="fas fa-user"></i> Conta</a>
+                <a href="compras.html"><i class="fas fa-shopping-cart"></i> Compras</a>
+                <a href="discord.html"><i class="fab fa-discord"></i> Discord</a>
+                <a href="anticheat.html"><i class="fas fa-shield-alt"></i> Anticheat</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="payment-container">
+            <h1 class="payment-title">Pagamento via PIX</h1>
+            <p class="payment-description">Escaneie o QR Code abaixo ou copie a chave PIX para realizar o pagamento</p>
+            
+            <div class="qr-code-container">
+                <div id="qrcode" class="qr-code"></div>
+            </div>
+
+            <div class="payment-info">
+                <div class="payment-info-item">
+                    <span class="payment-info-label">Produto:</span>
+                    <span class="payment-info-value" id="product-name"></span>
+                </div>
+                <div class="payment-info-item">
+                    <span class="payment-info-label">Valor:</span>
+                    <span class="payment-info-value highlight" id="product-price"></span>
+                </div>
+                <div class="payment-info-item">
+                    <span class="payment-info-label">Chave PIX:</span>
+                    <div style="display: flex; align-items: center;">
+                        <i class="fab fa-pix" style="color: #00ff88; font-size: 1.5rem; margin-right: 0.5rem;"></i>
+                        <span class="payment-info-value" id="pix-key">smunkmod@gmail.com</span>
+                        <button class="copy-button" onclick="copyPixKey()">
+                            <i class="fas fa-copy"></i>
+                            Copiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; text-align: center; color: #fff; font-size: 1rem;">
+                <p>Pagou e não aprovou? Entre em contato com o suporte via Discord:</p>
+                <a href="https://discord.gg/84eeNeAMAC" target="_blank" style="color: #7289da; text-decoration: none; font-size: 1.2rem;">
+                    <i class="fab fa-discord"></i> Suporte no Discord
+                </a>
+            </div>
+
+            <div class="timer-container">
+                <div class="timer" id="countdown">15:00</div>
+                <p class="timer-label">Tempo restante para concluir o pagamento</p>
+            </div>
+
+            <button class="back-button" onclick="window.history.back()">Voltar</button>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script>
+        async function validatePayment() {
+            const params = new URLSearchParams(window.location.search);
+            const title = params.get('title');
+            const price = params.get('price');
+
+            const response = await fetch('../banco de dados/database.json');
+            const data = await response.json();
+            const mod = data.games.find(game => game.title === title);
+
+            if (!mod) {
+                alert('Erro: Mod não encontrado.');
+                window.location.href = 'mod.html';
+                return;
+            }
+
+            if (mod.status === 'offline') {
+                alert(`Erro: O mod "${title}" está offline. Não é possível realizar o pagamento.`);
+                window.location.href = 'mod.html';
+                return;
+            }
+
+            if (mod.price !== price) {
+                alert('Erro: O preço do mod não corresponde ao valor esperado.');
+                window.location.href = 'mod.html';
+                return;
+            }
+
+            // Proceed with generating the PIX QR code
+            fillPaymentInfo();
+        }
+
+        window.addEventListener('load', validatePayment);
+
+        // Função para preencher as informações do pagamento
+        function fillPaymentInfo() {
+            const params = getUrlParams();
+
+            if (params.title) {
+                document.getElementById('product-name').textContent = params.title;
+            }
+
+            if (params.price) {
+                document.getElementById('product-price').textContent = params.price;
+
+                // Gerar QR Code com as informações do pagamento
+                const paymentInfo = `PIX: smunkmod@gmail.com\nValor: ${params.price}\nProduto: ${params.title}`;
+                generateQRCode(paymentInfo);
+            }
+        }
+
+        // Função para gerar o QR Code
+        function generateQRCode(data) {
+            const qr = qrcode(0, 'L');
+            qr.addData(data);
+            qr.make();
+            document.getElementById('qrcode').innerHTML = qr.createSvgTag({ cellSize: 8, margin: 4 });
+        }
+
+        // Função para obter parâmetros da URL
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                title: params.get('title'),
+                price: params.get('price')
+            };
+        }
+
+        // Função para copiar a chave PIX
+        function copyPixKey() {
+            const pixKey = document.getElementById('pix-key').textContent;
+            navigator.clipboard.writeText(pixKey)
+                .then(() => {
+                    alert('Chave PIX copiada!');
+                })
+                .catch(err => {
+                    console.error('Erro ao copiar: ', err);
+                });
+        }
+
+        // Função para iniciar o contador regressivo
+        function startCountdown() {
+            let minutes = 15;
+            let seconds = 0;
+            const countdownElement = document.getElementById('countdown');
+            
+            const interval = setInterval(() => {
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(interval);
+                        countdownElement.textContent = "Expirado";
+                        return;
+                    }
+                    minutes--;
+                    seconds = 59;
+                } else {
+                    seconds--;
+                }
+                
+                const formattedMinutes = minutes.toString().padStart(2, '0');
+                const formattedSeconds = seconds.toString().padStart(2, '0');
+                countdownElement.textContent = `${formattedMinutes}:${formattedSeconds}`;
+            }, 1000);
+        }
+
+        // Carregar informações quando a página carregar
+        window.addEventListener('load', () => {
+            fillPaymentInfo();
+            startCountdown();
+        });
+    </script>
+</body>
+</html>

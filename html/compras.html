@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMUNK MOD - Compras</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="../js/security.js"></script>
+    <style>
+        .header {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+
+        .main-content {
+            margin-top: 5rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: #2a2a2a;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 2rem;
+            color: #fff;
+        }
+
+        .product-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #ccc;
+        }
+
+        .product-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 0.8rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            color: #00ff88;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #888;
+        }
+
+        .price-container {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: #00ff88;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-description {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-method {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .payment-method:hover,
+        .payment-method.active {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #00ff88;
+        }
+
+        .payment-method i {
+            font-size: 1.5rem;
+            color: #00ff88;
+        }
+
+        .buy-button {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #1a1a1a;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 300px;
+            }
+
+            .product-info {
+                padding: 1.5rem;
+            }
+
+            .product-title {
+                font-size: 1.5rem;
+            }
+
+            .price {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                SMUNK MOD
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="mod.html"><i class="fas fa-puzzle-piece"></i> Mods</a>
+                <a href="conta.html"><i class="fas fa-user"></i> Conta</a>
+                <a href="compras.html"><i class="fas fa-shopping-cart"></i> Compras</a>
+                <a href="discord.html"><i class="fab fa-discord"></i> Discord</a>
+                <a href="anticheat.html"><i class="fas fa-shield-alt"></i> Anticheat</a>
+            </nav>
+        </div>
+    </header>
+
+    <div style="position: fixed; top: 10px; right: 10px;">
+        <img src="../imagem/bandeiras/brasil.jpg" alt="Bandeira do Brasil" style="width: 30px; height: 20px; cursor: pointer;" onclick="alert('Bandeira do Brasil clicada!')">
+    </div>
+
+    <div style="position: fixed; bottom: 20px; right: 20px;">
+        <img src="../imagem/bandeiras/brasil.jpg" alt="Bandeira do Brasil" style="width: 40px; height: 30px; cursor: pointer; border-radius: 5px;" onclick="alert('Idioma alterado para Português!')">
+    </div>
+
+    <main class="main-content">
+        <div class="product-container">
+            <img src="" alt="Imagem do Mod" class="product-image" id="mod-image" onerror="this.onerror=null; this.src='../imagem/placeholder.png';">
+            <div class="product-info">
+                <h1 class="product-title" id="mod-title"></h1>
+                <p class="product-description" id="mod-description"></p>
+                
+                <div class="product-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="mod-downloads">0</div>
+                        <div class="stat-label">Downloads</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="mod-rating">5.0</div>
+                        <div class="stat-label">Avaliação</div>
+                    </div>
+                </div>
+
+                <div class="price-container">
+                    <div class="price" id="mod-price"></div>
+                    <p class="price-description">Acesso vitalício a todas as atualizações</p>
+                </div>
+
+                <div id="free-section" style="display: none;">
+                    <div class="free-icon" style="color: #00ff88; font-size: 1.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-gift"></i> Gratuito
+                    </div>
+                    <a id="download-button" class="buy-button" target="_blank">Download</a>
+                </div>
+
+                <div id="premium-section">
+                    <div class="payment-methods">
+                        <div class="payment-method" id="pix-method">
+                            <i class="fab fa-pix" style="color: #00ff88;"></i>
+                            <span>PIX</span>
+                        </div>
+                        <div class="payment-method" id="card-method">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Cartão</span>
+                        </div>
+                        <div class="payment-method" id="boleto-method">
+                            <i class="fas fa-barcode"></i>
+                            <span>Boleto</span>
+                        </div>
+                    </div>
+                    <button class="buy-button" id="buy-button">Comprar Agora</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Função para obter parâmetros da URL
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                title: params.get('title'),
+                description: params.get('description'),
+                image: params.get('image'),
+                downloads: params.get('downloads'),
+                price: params.get('price')
+            };
+        }
+
+        // Função para preencher as informações do mod
+        function fillModInfo() {
+            const params = getUrlParams();
+            
+            if (params.title) {
+                document.getElementById('mod-title').textContent = params.title;
+                document.title = `SMUNK MOD - ${params.title}`;
+            }
+            
+            if (params.description) {
+                document.getElementById('mod-description').textContent = params.description;
+            }
+            
+            if (params.image) {
+                document.getElementById('mod-image').src = params.image;
+                document.getElementById('mod-image').alt = params.title;
+            }
+            
+            if (params.downloads) {
+                document.getElementById('mod-downloads').textContent = params.downloads;
+            }
+
+            if (params.price) {
+                document.getElementById('mod-price').textContent = params.price;
+
+                // Show FREE section if price is R$ 0,00
+                if (params.price === "R$ 0,00") {
+                    document.getElementById('free-section').style.display = "block";
+                    document.getElementById('premium-section').style.display = "none";
+
+                    // Set download link for FREE mods
+                    if (params.title === "Snowbreak") {
+                        document.getElementById('download-button').href = "https://www.mediafire.com/file/m5j7t96kqnsfp5s/Mod_MenuSnowbreak.zip/file";
+                    }
+                }
+            }
+        }
+
+        // Função para redirecionar para a página de pagamento PIX
+        function redirectToPixPayment() {
+            const params = getUrlParams();
+            const pixUrl = `pagamento-pix.html?title=${encodeURIComponent(params.title)}&price=${encodeURIComponent(params.price)}`;
+            window.location.href = pixUrl;
+        }
+
+        // Função para configurar os métodos de pagamento
+        function setupPaymentMethods() {
+            // Adicionar classe ativa ao clicar em um método de pagamento
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            let selectedMethod = null;
+            
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // Remover classe ativa de todos os métodos
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    
+                    // Adicionar classe ativa ao método selecionado
+                    this.classList.add('active');
+                    selectedMethod = this.id;
+                });
+            });
+
+            // Configurar botão de compra
+            const buyButton = document.getElementById('buy-button');
+            buyButton.addEventListener('click', function() {
+                if (selectedMethod === 'pix-method') {
+                    redirectToPixPayment();
+                } else if (selectedMethod === 'card-method') {
+                    alert('Pagamento com cartão em desenvolvimento!');
+                } else if (selectedMethod === 'boleto-method') {
+                    alert('Pagamento com boleto em desenvolvimento!');
+                } else {
+                    alert('Por favor, selecione um método de pagamento!');
+                }
+            });
+        }
+
+        // Função para alternar o idioma
+        function toggleLanguage(lang) {
+            const flagBr = document.getElementById('flag-br');
+            const flagUs = document.getElementById('flag-us');
+
+            if (lang === 'br') {
+                flagBr.style.display = 'block';
+                flagUs.style.display = 'none';
+            } else if (lang === 'us') {
+                flagBr.style.display = 'none';
+                flagUs.style.display = 'block';
+            }
+        }
+
+        // Função para validar os detalhes do mod
+        async function validateModDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const title = params.get('title');
+
+            const response = await fetch('../banco de dados/database.json');
+            const data = await response.json();
+            const mod = data.games.find(game => game.title === title);
+
+            if (!mod) {
+                alert('Erro: Mod não encontrado.');
+                window.location.href = 'mod.html';
+                return;
+            }
+
+            if (mod.status === 'offline') {
+                alert(`Erro: O mod "${title}" está offline. Não é possível acessar a página de compras.`);
+                window.location.href = 'mod.html';
+                return;
+            }
+
+            // Populate mod details on the page
+            fillModInfo();
+        }
+
+        // Carregar informações quando a página carregar
+        window.addEventListener('load', () => {
+            validateModDetails();
+            setupPaymentMethods();
+        });
+
+    </script>
+</body>
+</html>

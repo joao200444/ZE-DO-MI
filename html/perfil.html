@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMUNK MOD - Perfil</title>
+    <link rel="stylesheet" href="../css/perfil.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="perfil-container">
+        <h1>Bem-vindo, <span id="username"></span>!</h1>
+        <p>Este é o seu perfil.</p>
+        <button id="logoutButton" class="logout-button">Sair</button>
+    </div>
+
+    <script>
+        // Carregar o nome do usuário
+        const username = localStorage.getItem('username');
+        if (!username) {
+            alert('Você não está logado!');
+            window.location.href = 'conta.html';
+        } else {
+            document.getElementById('username').textContent = username;
+        }
+
+        // Função de logout
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            localStorage.removeItem('username');
+            alert('Você saiu da sua conta.');
+            window.location.href = 'conta.html';
+        });
+    </script>
+</body>
+</html>
