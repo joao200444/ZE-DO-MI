@@ -366,7 +366,7 @@
             <button class="filter-btn">Recentes</button>
             <button class="filter-btn">Premium</button>
             <button class="filter-btn">FREE</button>
-            <button class="filter-btn">Chgeat Engine Modificado</button>
+            <button class="filter-btn">FREE</button>
         </div>
 
         <div class="games-grid" id="gamesGrid">
@@ -567,105 +567,24 @@
     </script>
 
     <!-- Botão de exemplo -->
-    <button id="mod-button" class="buy-button">MODS</button>
+    <div class="card">
+        <h2>Solo Leveling Arise</h2>
+        <p>Pacote premium de mods para Solo Leveling Arise, oferecendo customizações exclusivas e melhorias de gameplay.</p>
+        <img src="../imagem/Solo leveling arise.jpg" alt="Solo Leveling Arise">
+        <p>Categoria: FREE</p>
+        <p>Preço: R$ 0,00</p>
+        <p>Especificação: Online</p>
+        <a href="compras.html?title=Solo Leveling Arise&description=Pacote premium de mods para Solo Leveling Arise, oferecendo customizações exclusivas e melhorias de gameplay.&image=../imagem/Solo leveling arise.jpg&downloads=5k+&price=R$ 0,00">Ver mais</a>
+    </div>
+
+    <div class="card">
+        <h2>Snowbreak</h2>
+        <p>Pacote de mods para Snowbreak, oferecendo melhorias visuais e recursos adicionais para uma experiência mais imersiva.</p>
+        <img src="../imagem/snowbreak.jpg" alt="Snowbreak">
+        <p>Categoria: FREE</p>
+        <p>Preço: R$ 0,00</p>
+        <p>Especificação: Online</p>
+        <a href="compras.html?title=Snowbreak&description=Pacote de mods para Snowbreak, oferecendo melhorias visuais e recursos adicionais para uma experiência mais imersiva.&image=../imagem/snowbreak.jpg&downloads=186&price=R$ 0,00">Ver mais</a>
+    </div>
 </body>
 </html>
-@media screen and (max-width: 1200px) {
-    .games-grid {
-        grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-        gap: 1.5rem;
-    }
-
-    .side-panel {
-        width: 80%;
-        right: -80%;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 0.5rem;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-        font-size: 0.9rem;
-    }
-
-    .main-content {
-        margin-top: 8rem;
-        padding: 1rem;
-    }
-
-    .filters {
-        justify-content: center;
-    }
-
-    .games-grid {
-        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-        gap: 1rem;
-    }
-
-    .game-card {
-        margin: 0 auto;
-        max-width: 20rem;
-    }
-
-    .game-image {
-        height: 10rem;
-    }
-
-    .side-panel {
-        width: 100%;
-        right: -100%;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .logo {
-        font-size: 1.2rem;
-    }
-
-    .nav-links {
-        font-size: 0.8rem;
-        gap: 0.5rem;
-    }
-
-    .filter-btn {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-    }
-
-    .game-info {
-        padding: 0.8rem;
-    }
-
-    .game-title {
-        font-size: 1rem;
-    }
-
-    .game-description {
-        font-size: 0.8rem;
-    }
-
-    .game-stats {
-        font-size: 0.7rem;
-    }
-
-    .action-btn {
-        padding: 0.6rem;
-        font-size: 0.9rem;
-    }
-
-    .mod-details h2 {
-        font-size: 1.2rem;
-    }
-
-    .mod-details p {
-        font-size: 0.9rem;
-    }
-}
