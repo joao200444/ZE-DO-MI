@@ -4,132 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMUNK MODS</title>
-    <link rel="icon" href="imagem/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css"> <!-- Link para o arquivo CSS externo -->
+    <style>
+        body {
+            overflow-x: hidden; /* Esconde a barra de rolagem horizontal */
+            overflow-y: auto; /* Adiciona a barra de rolagem vertical quando necessário */
+            min-height: 200vh; /* Garante que a página tenha altura suficiente para rolar */
+        }
+
+        .logo-overlay {
+            position: fixed; /* Alterado para fixed */
+            top: 10vh; /* Ajustado para melhor posicionamento */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 200;
+            pointer-events: none; /* Para não interferir com os cards */
+            animation: fadeIn 2s ease-in-out forwards, moveUpDown 4s linear infinite alternate;
+        }
+
+        .logo-overlay img {
+            width: 100px;
+            height: auto;
+            display: block; /* Garante que a imagem se comporte como um bloco */
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes moveUpDown {
+            0% { transform: translateX(-50%) translateY(0); }
+            100% { transform: translateX(-50%) translateY(20px); }
+        }
+
+        .line-separator {
+            position: fixed;
+            top: 30vh;
+            left: 20%; /* Alterado para 0 */
+            width: 60%; /* Alterado para 100% */
+            height: 2px;
+            background-color: #00ff88;
+            box-shadow: 0 0 10px #00ff88;
+            z-index: 150;
+            transform: translateX(0);
+        }
+    </style>
 </head>
 <body>
-    <nav class="sidebar" aria-label="Sidebar Navigation">
-        <button class="close-btn" aria-label="Close Sidebar">
-            <i class="fas fa-times"></i>
-        </button>
-        <ul class="menu-items">
-            <li><a href="html/mod.html"><i class="fas fa-puzzle-piece"></i> MOD</a></li>
-            <li><a href="html/conta.html"><i class="fas fa-user"></i> Conta</a></li>
-            <li><a href="html/compras.html"><i class="fas fa-shopping-cart"></i> Compras</a></li>
-            <li><a href="html/discord.html"><i class="fab fa-discord"></i> Discord</a></li>
-            <li><a href="html/anticheat.html"><i class="fas fa-shield-alt"></i> Anticheat</a></li>
+    <div class="line-separator"></div>
+
+    <div class="logo-overlay">
+        <img src="imagem/icone do nome do logo.jpg" alt="Logo">
+    </div>
+
+    <div class="site-title">
+        <img src="imagem/icone do nome do logo.jpg" alt="Smunk Mod Icon" style="width: 30px; height: 30px; margin-right: 0.5rem;">
+        Smunk Mod
+    </div>
+
+    <div class="card-container">
+        <div class="card" onclick="window.location.href='html/mod.html'">
+            <img src="imagem/snowbreak.jpg" alt="Snowbreak">
+            <div class="card-content">
+                <h3>Snowbreak</h3>
+                <p>Explore mods para Snowbreak.</p>
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='html/mod.html'">
+            <img src="imagem/Solo leveling arise.jpg" alt="Solo Leveling Arise">
+            <div class="card-content">
+                <h3>Solo Leveling Arise</h3>
+                <p>Mods para dominar o jogo.</p>
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='html/mod.html'">
+            <img src="imagem/wuthering waves.jpg" alt="Wuthering Waves">
+            <div class="card-content">
+                <h3>Wuthering Waves</h3>
+                <p>Descubra mods para Wuthering Waves.</p>
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='html/mod.html'">
+            <img src="imagem/naraka.jpg" alt="Naraka">
+            <div class="card-content">
+                <h3>Naraka</h3>
+                <p>Mods para artes marciais em Naraka.</p>
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='html/mod.html'">
+            <img src="imagem/Genshin-Impact.jpg" alt="Genshin Impact">
+            <div class="card-content">
+                <h3>Genshin Impact</h3>
+                <p>Explore Teyvat com mods exclusivos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" style="margin-top: 50vh;">
+        <div class="card" onclick="window.location.href='html/mod.html'">
+            <i class="fas fa-crosshairs card-icon"></i>
+            <div class="card-content">
+                <h3>FPS</h3>
+                <p>Explore mods para FPS.</p>
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='html/mod.html'">
+            <i class="fas fa-magic card-icon"></i>
+            <div class="card-content">
+                <h3>RPG</h3>
+                <p>Descubra mods para RPG.</p>
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='html/mod.html'">
+            <i class="fas fa-globe card-icon"></i>
+            <div class="card-content">
+                <h3>MMO</h3>
+                <p>Mods para jogos MMO.</p>
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='html/mod.html'">
+            <i class="fas fa-mobile-alt card-icon"></i>
+            <div class="card-content">
+                <h3>Mobile</h3>
+                <p>Mods para jogos Mobile.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="menu-btn" onclick="toggleSidebar(this)">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="#"><i class="fas fa-home" style="color: #e74c3c;"></i> Home</a></li>
+            <li><a href="html/mod.html"><i class="fas fa-puzzle-piece" style="color: #3498db;"></i> Mods</a></li>
+            <li><a href="#"><i class="fab fa-discord" style="color: #7289da;"></i> Discord</a></li>
+            <li><a href="#"><i class="fas fa-shield-alt" style="color: #2ecc71;"></i> Anticheat</a></li>
         </ul>
     </nav>
-    <div class="menu-container">
-        <div class="menu-left">
-            <button class="menu-btn" aria-label="Open Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <span class="menu-title">SMUNK MODS <i class="fas fa-laptop-code"></i></span>
-        </div>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Pesquisar mods..." class="search-input" aria-label="Search Mods">
-            <i class="fas fa-search search-icon"></i>
-        </div>
-    </div>
-
-    <div class="carousel-container" aria-label="Game Highlights">
-        <div class="carousel">
-            <div class="carousel-slide active">
-                <img src="imagem/Genshin-Impact.jpg" alt="Genshin Impact">
-                <div class="slide-content">
-                    <h2>Genshin Impact</h2>
-                    <p>Explore Teyvat com mods exclusivos</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="imagem/Solo leveling arise.jpg" alt="Solo Leveling Arise">
-                <div class="slide-content">
-                    <h2>Solo Leveling Arise</h2>
-                    <p>Domine o poder dos hunters</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="imagem/couter strike.jpg" alt="Counter Strike">
-                <div class="slide-content">
-                    <h2>Counter Strike</h2>
-                    <p>Melhore sua gameplay com nossos mods</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="imagem/naraka.jpg" alt="Naraka">
-                <div class="slide-content">
-                    <h2>Naraka</h2>
-                    <p>Domine as artes marciais</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="imagem/wuthering waves.jpg" alt="Wuthering Waves">
-                <div class="slide-content">
-                    <h2>Wuthering Waves</h2>
-                    <p>Explore um mundo pós-apocalíptico</p>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-btn prev">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="carousel-btn next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-        <div class="carousel-dots"></div>
-    </div>
-
-    <div class="mod-title">
-        <h2>MOD MENUS</h2>
-    </div>
-
-    <div class="cards-container">
-        <div class="card" tabindex="0">
-            <i class="fas fa-gamepad-modern card-icon"></i>
-            <h3>FPS</h3>
-            <p>Domine o jogo com recursos avançados de mira e controle de recoil personalizável</p>
-        </div>
-        <div class="card" tabindex="0">
-            <i class="fas fa-wand-sparkles card-icon"></i>
-            <h3>RPG</h3>
-            <p>Explore mundos fantásticos com recursos especiais e melhorias de personagem</p>
-        </div>
-        <div class="card" tabindex="0">
-            <i class="fas fa-users-between-lines card-icon"></i>
-            <h3>MMO</h3>
-            <p>Destaque-se em jogos online com recursos exclusivos de PvP e PvE</p>
-        </div>
-        <div class="card" tabindex="0">
-            <i class="fas fa-mobile-screen-button card-icon"></i>
-            <h3>Mobile</h3>
-            <p>Experiência premium em jogos mobile com controles otimizados</p>
-        </div>
-    </div>
-
-    <div class="theme-toggle" aria-label="Toggle Theme">
-        <i class="fas fa-moon"></i>
-    </div>
 
     <div id="particles-js"></div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-            <p class="copyright">© 2024 SMUNK MODS. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="js/security.js"></script>
-    <script src="js/script.js"></script>
+    <script>
+        /* particlesJS('dom-id', params);
+         * params - config object
+         */
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#00ff88"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 5,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00ff88",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 200,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 0.8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true,
+            "config_demo": {
+                "hide_card": false,
+                "background_color": "#b61924",
+                "background_image": "",
+                "background_position": "50% 50%",
+                "background_repeat": "no-repeat",
+                "background_size": "cover"
+            }
+        });
+
+        function toggleSidebar(button) {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle('active');
+
+            var icon = button.querySelector('i');
+            if (sidebar.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fas', 'fa-times'); // Ícone de "X"
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fas', 'fa-bars'); // Ícone de barras
+            }
+        }
+    </script>
 </body>
 </html>
