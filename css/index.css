@@ -1,0 +1,219 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden; /* Esconde as barras de rolagem */
+    cursor: auto;
+}
+
+.site-title {
+    position: fixed;
+    top: 2vh;
+    left: 2vw;
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+    color: white;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    user-select: none; /* Torna o texto não selecionável */
+    position: relative; /* Necessário para posicionar a linha de carregamento */
+    overflow: hidden; /* Esconde a linha de carregamento quando não está ativa */
+}
+
+/* Removendo estilos da linha de carregamento */
+.site-title::after {
+}
+
+.site-title:hover::after {
+}
+
+.site-title img {
+    width: 30px;
+    height: 30px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+    }
+    100% {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+    }
+}
+
+.card-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    z-index: 100; /* Garante que os cards fiquem acima das partículas */
+}
+
+.card {
+    position: relative;
+    width: min(150px, 12vw);
+    height: min(220px, 35vh);
+    background: linear-gradient(145deg, #1e2024, #23272b); /* Gradiente de fundo */
+    box-shadow: 5px 5px 15px #1a1d21, -5px -5px 15px #262b2f; /* Sombra suave */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.3s;
+    cursor: pointer; /* Altera o cursor para uma mãozinha */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 7px 7px 20px #1a1d21, -7px -7px 20px #262b2f; /* Sombra mais intensa no hover */
+}
+
+.card img {
+    width: 100%;
+    height: min(150px, 15vh);
+    object-fit: cover;
+    border-bottom: 2px solid #00ff88;
+}
+
+.card-icon {
+    font-size: 4em;
+    color: #00ff88;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    text-shadow: 0 0 10px #00ff88;
+}
+
+.card-content {
+    padding: 0.8rem;
+    color: white;
+}
+
+.card-content h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: #00ff88; /* Cor original: verde */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transição para cor e sombra */
+}
+
+.card:hover .card-content h3 {
+    color: #ffcc00; /* Cor surpresa: amarelo dourado */
+    text-shadow: 0 0 10px #ffcc00; /* Sombra amarela */
+}
+
+.card p {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+    color: #999;
+}
+
+/* Estilos para o menu lateral */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #1a1a1a;
+    padding-top: 50px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 15px;
+    text-align: left;
+}
+
+.sidebar li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s ease;
+    position: relative; /* Para posicionar a linha */
+    overflow: hidden; /* Esconde a linha */
+}
+
+.sidebar li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #00ff88;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar li a:hover {
+    color: #00ff88;
+}
+
+.sidebar li a:hover::after {
+    transform: translateX(0);
+}
+
+.menu-btn {
+    position: fixed;
+    top: 2vh;
+    right: 2vw;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem; /* Aumentando o tamanho do ícone */
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease, color 0.3s ease; /* Adicionando transição para a rotação */
+}
+
+.menu-btn:hover {
+    color: #00ff88; /* Mudando a cor no hover */
+    /* Removendo a rotação */
+}
+
+.line-separator {
+}
+
+.decorative-element {
+    position: fixed;
+    top: 2vh; /* Same as line-separator */
+    left: 0;
+    width: 100%;
+    height: 10vh; /* Adjust as needed */
+    z-index: 140; /* Below the line but above other content */
+    pointer-events: none; /* Allows clicking through the element */
+    /* Add your decorative styling here (e.g., gradients, shapes) */
+    background: linear-gradient(to bottom, rgba(0, 255, 136, 0.3), transparent); /* Example */
+}
+
+/* Estilos para o canvas de partículas */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Garante que as partículas fiquem atrás dos cards */
+}
