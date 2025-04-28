@@ -7,7 +7,7 @@
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Reduced from 300px */
     gap: 2rem;
     padding: 2rem;
 }
@@ -31,7 +31,7 @@
 
 .game-image {
     width: 100%;
-    height: 200px;
+    height: 150px; /* Reduced from 200px */
     object-fit: cover;
     transition: transform 0.4s ease;
 }
@@ -50,6 +50,12 @@
     color: #fff;
     margin-bottom: 0.5rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s ease; /* Add transition for smooth effect */
+}
+
+.game-card:hover .game-title {
+    color: #ffd700; /* Gold color on hover */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Enhance the gold color with a shadow */
 }
 
 .game-description {

@@ -92,16 +92,18 @@
         }
 
         .game-card {
-            background: #2a2a2a;
-            border-radius: 0.9375rem;
-            overflow: hidden;
-            transition: transform 0.3s;
-            position: relative;
+            /* background: #2a2a2a; */ /* Removed background color */
+            /* border-radius: 0.9375rem; */ /* Removed border-radius */
+            /* overflow: hidden; */ /* Removed overflow */
+            /* transition: transform 0.3s; */ /* Removed transition */
+            /* position: relative; */ /* Removed position */
+            border: none; /* Remove border */
+            box-shadow: none; /* Remove box-shadow */
         }
 
-        .game-card:hover {
-            transform: translateY(-5px);
-        }
+        /* .game-card:hover { */
+        /* transform: translateY(-5px); */ /* Remove hover transform */
+        /* } */
 
         .game-image {
             width: 100%;
@@ -330,6 +332,8 @@
         }
 
         .filter-specification {
+            display: flex;
+            align-items: center;
             color: #fff;
             font-size: 1rem;
             margin-left: 1rem;
@@ -420,7 +424,7 @@
                 <i class="fas fa-exclamation-triangle" style="color: #fff; font-size: 1.5rem;"></i>
             </div>
             <h2 style="color: #ff4d4d; margin-top: 2rem; font-size: 1.5rem;">Mod Offline</h2>
-            <p id="offlineMessage" style="color: #ccc; margin: 1rem 0 2rem; font-size: 1rem; line-height: 1.5;">...</p>
+            <p id="offlineMessage" style="color: #ccc; margin: 1rem 0 2rem; font-size: 1rem; line-height: 1.5;">Este mod está atualmente offline. Ele não está disponível para compra ou download no momento. Por favor, volte mais tarde para verificar se ele está online novamente.</p>
             <button onclick="closeOfflineModal()" style="background: linear-gradient(135deg, #ff4d4d, #cc0000); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: bold; transition: all 0.3s; box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);">Fechar</button>
         </div>
     </div>
@@ -498,75 +502,21 @@
             const image = button.getAttribute('data-image');
             const downloads = button.getAttribute('data-downloads');
             const price = button.getAttribute('data-price');
-            const status = button.getAttribute('data-status'); // Get the mod's status
+            const status = button.getAttribute('data-status');
 
             if (status === 'offline') {
-                showOfflineModal(`O mod "${title}" está offline. Aguarde ele ficar online para baixar ou adquirir a assinatura.`);
-            } else if (status === 'online') {
-                const url = `compras.html?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(image)}&downloads=${encodeURIComponent(downloads)}&price=${encodeURIComponent(price)}`;
-                window.location.href = url;
+                document.getElementById('offlineMessage').textContent = `O mod "${title}" está offline e não pode ser acessado.`;
+                document.getElementById('offlineModal').style.display = 'flex';
+                return;
             }
+
+            // Redirecionar para a página de compras com os parâmetros
+            window.location.href = `compras.html?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(image)}&downloads=${encodeURIComponent(downloads)}&price=${encodeURIComponent(price)}`;
         }
 
-        // Function to show the offline modal
-        function showOfflineModal(message) {
-            const modal = document.getElementById('offlineModal');
-            const messageElement = document.getElementById('offlineMessage');
-            messageElement.textContent = message;
-            modal.style.display = 'flex';
-        }
-
-        // Function to close the offline modal
         function closeOfflineModal() {
-            const modal = document.getElementById('offlineModal');
-            modal.style.display = 'none';
+            document.getElementById('offlineModal').style.display = 'none';
         }
     </script>
-    <script>
-        // Function to filter mod cards
-        function filterMods(category) {
-            const cards = document.querySelectorAll('.game-card');
-            cards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                if (category === 'todos' || cardCategory.includes(category)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Add event listeners to filter buttons
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const category = button.textContent.toLowerCase().replace(' ', '-');
-                filterMods(category);
-            });
-        });
-    </script>
-    <script>
-        // Função para verificar o status do mod e redirecionar ou exibir mensagem
-        function handleModStatus(status, title) {
-            if (status === 'offline') {
-                alert(`Aviso: O mod "${title}" está offline. Aguarde ele ficar online para baixar ou adquirir a assinatura.`);
-            } else if (status === 'online') {
-                window.location.href = `compras.html?title=${encodeURIComponent(title)}`;
-            }
-        }
-
-        // Exemplo de uso: Adicionar evento ao botão de mods
-        document.addEventListener('DOMContentLoaded', () => {
-            const modButton = document.getElementById('mod-button'); // Botão de mods
-            const modStatus = 'offline'; // Substitua por lógica dinâmica para obter o status do mod
-            const modTitle = 'Exemplo Mod'; // Substitua pelo título do mod
-
-            modButton.addEventListener('click', () => {
-                handleModStatus(modStatus, modTitle);
-            });
-        });
-    </script>
-
-    <!-- Botão de exemplo -->
-   
 </body>
 </html>
